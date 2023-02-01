@@ -21,6 +21,15 @@ function App() {
   // The transactor wraps transactions and provides notificiations
   const tx = Transactor(userSigner, gasPrice) || undefined;
 
+  // Ensure wallet connects on load (instantly)
+  useEffect(() => {
+    const initConnect = async () => {
+      console.log("initConnect in useEffect");
+      await connectWallet();
+    };
+    initConnect();
+  },[]);
+
   const sendTx = async (assetHash: any, assetId: any, review: any, rating: any) => {
     console.log('Attempting sendTx!');
     const createTx = await writeContracts.HumbleOpinion.create(review, false, assetHash, assetId, parseInt(rating), 1);
@@ -39,12 +48,11 @@ function App() {
 
   const messageFromContentScript = async (message: any, sender: any, sendResponse: any) => {
     if (message.assetHash) {
-      connectWallet();
+      // trigger transaction
+      await sendTx(message.assetHash, message.assetId, message.review, message.rating);
       sendResponse({
         message: 'Transaction submitted',
       });
-      // trigger transaction
-      await sendTx(message.assetHash, message.assetId, message.review, message.rating);
     }
   };
 
