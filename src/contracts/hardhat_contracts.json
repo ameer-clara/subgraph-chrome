@@ -1,0 +1,217 @@
+{
+  "5": {
+    "goerli": {
+      "name": "goerli",
+      "chainId": "5",
+      "contracts": {
+        "HumbleOpinion": {
+          "address": "0xC27Fa7815312cA5eD48cc61219A2cbb9D5975d5A",
+          "abi": [
+            {
+              "inputs": [],
+              "stateMutability": "nonpayable",
+              "type": "constructor"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "sender",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "string",
+                  "name": "review",
+                  "type": "string"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "rating",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "string",
+                  "name": "assetHash",
+                  "type": "string"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "string",
+                  "name": "assetId",
+                  "type": "string"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "chainId",
+                  "type": "uint256"
+                }
+              ],
+              "name": "NewReview",
+              "type": "event"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "_text",
+                  "type": "string"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "_owned",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_assetHash",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_assetId",
+                  "type": "string"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_rating",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_chainId",
+                  "type": "uint256"
+                }
+              ],
+              "name": "create",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_index",
+                  "type": "uint256"
+                }
+              ],
+              "name": "get",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "id",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "author",
+                  "type": "address"
+                },
+                {
+                  "internalType": "string",
+                  "name": "text",
+                  "type": "string"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "rating",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "assetHash",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "assetId",
+                  "type": "string"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "chainId",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "reviewCount",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "name": "reviews",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "id",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "text",
+                  "type": "string"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "ownerWhenReviewed",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "address",
+                  "name": "author",
+                  "type": "address"
+                },
+                {
+                  "internalType": "string",
+                  "name": "assetHash",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "assetId",
+                  "type": "string"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "rating",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "chainId",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

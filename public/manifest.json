@@ -1,0 +1,38 @@
+{
+  "name": "Scaffold Eth Chrome extension ",
+  "description": "Scaffold Eth Chrome extension with React Typescript",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Open popup to connect wallet"
+  },
+  "icons": {
+    "16": "logo192.png",
+    "48": "logo192.png",
+    "128": "logo192.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.opensea.io/*"
+      ],
+      "js": [
+        "./static/js/content.js"
+      ],
+      "css": [
+        "./static/css/opensea.css"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "./static/js/background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "webRequest",
+    "webNavigation"
+  ]
+}
