@@ -24,26 +24,70 @@ function App() {
   // Ensure wallet connects on load (instantly)
   useEffect(() => {
     const initConnect = async () => {
-      console.log("initConnect in useEffect");
+      console.log('initConnect in useEffect');
       await connectWallet();
     };
     initConnect();
-  },[]);
+  }, []);
 
   const sendTx = async (assetHash: any, assetId: any, review: any, rating: any) => {
-    console.log('Attempting sendTx!');
-    const createTx = await writeContracts.HumbleOpinion.create(review, false, assetHash, assetId, parseInt(rating), 1);
+    console.log('Attempting sendTx!', assetHash, assetId, review, rating);
+
+    // const createTx = await writeContracts.HumbleOpinion.create(review, false, assetHash, assetId, parseInt(rating), 1);
 
     // @ts-ignore
-    const result = tx(createTx, (update) => {
-      console.log('📡 Transaction Update:', update);
-      if (update && (update.status === 'confirmed' || update.status === 1)) {
-        console.log(' 🍾 Transaction ' + update.hash + ' finished!');
-        console.log(' ⛽️ ' + update.gasUsed + '/' + (update.gasLimit || update.gas) + ' @ ' + parseFloat(update.gasPrice) / 1000000000 + ' gwei');
-      }
-    });
+    var newTx = await tx(writeContracts.HumbleOpinion.create(review, false, assetHash, assetId, parseInt(rating), 1));
+    var result = await newTx.wait();
+
+    // // @ts-ignore
+    // const result = tx(createTx, (update) => {
+    //   console.log('📡 Transaction Update:', update);
+    //   if (update && (update.status === 'confirmed' || update.status === 1)) {
+    //     console.log(' 🍾 Transaction ' + update.hash + ' finished!');
+    //     console.log(' ⛽️ ' + update.gasUsed + '/' + (update.gasLimit || update.gas) + ' @ ' + parseFloat(update.gasPrice) / 1000000000 + ' gwei');
+    //   }
+    // });
+    // console.log(await result);
     console.log('awaiting metamask/web3 confirm result...', result);
-    console.log(await result);
+
+    chrome.runtime.sendMessage(
+      'haibllpmgchkboompbnjeopjknlaelmb',
+      {
+        message: 'Transaction xxxxxxxxxx submitted',
+      },
+      (response) => {
+        console.log('did it work        ?');
+        /* handle the response from background here */
+      }
+    );
+
+    // window.close();
+
+    // const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    // console.log('tab: ', tab);
+
+    // // @ts-ignore
+    // chrome.tabs.sendMessage(tab.id, { message: 'Transaction xxxxxxxxxx submitted' });
+
+    // window.close();
+
+    //   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    //     chrome.tabs.executeScript(tabs[0].id, {
+    //         file: "content_script3.js"
+    //     }, function(){
+    //         chrome.tabs.sendMessage(tabs[0].id,{
+    //             updateTextTo: updateTextTo
+    //         });
+    //     });
+    // });
+
+    //send message to content script
+    // chrome.tabs.query({ active: true, currentWindow: true }, function (tabs: any) {
+    //   console.log('Tabs: ', tabs);
+    //   chrome.tabs.sendMessage(tabs[0].id, { message: 'Transaction xxxxxxxxxx submitted' }, function (response) {
+    //     console.log(response);
+    //   });
+    // });
   };
 
   const messageFromContentScript = async (message: any, sender: any, sendResponse: any) => {
@@ -61,7 +105,7 @@ function App() {
     return function cleanup() {
       chrome.runtime.onMessage.removeListener(messageFromContentScript);
     };
-  })
+  });
 
   return (
     <div className='App'>
@@ -72,7 +116,10 @@ function App() {
           <button onClick={isAuthenticated ? disconnectWallet : connectWallet} id='wallet-connect'>
             {isAuthenticated ? 'Disconnect Wallet' : 'Connect Wallet'}
           </button>
-          <button onClick={async () => { await sendTx('xxx', '100', "Btn test", 3); }}>
+          <button
+            onClick={async () => {
+              await sendTx('xxx', '100', 'Btn test', 3);
+            }}>
             Send Tx
           </button>
         </p>
