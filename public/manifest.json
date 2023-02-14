@@ -1,6 +1,6 @@
 {
-  "name": "Scaffold Eth Chrome extension ",
-  "description": "Scaffold Eth Chrome extension with React Typescript",
+  "name": "Subgraph Chrome",
+  "description": "Showcase utilization of Subgraph in Chrome Extension",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
