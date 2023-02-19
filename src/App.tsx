@@ -50,16 +50,9 @@ function App() {
     // console.log(await result);
     console.log('awaiting metamask/web3 confirm result...', result);
 
-    chrome.runtime.sendMessage(
-      'haibllpmgchkboompbnjeopjknlaelmb',
-      {
-        message: 'Transaction xxxxxxxxxx submitted',
-      },
-      (response) => {
-        console.log('did it work        ?');
-        /* handle the response from background here */
-      }
-    );
+    chrome.runtime.sendMessage({
+      message: 'Transaction submitted',
+    });
 
     // window.close();
 
