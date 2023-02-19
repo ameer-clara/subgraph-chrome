@@ -17,6 +17,6 @@ Builds the app to the `build` folder with hot reload, ideal for development.\
 
 ## Usage
 
-Navigate to an NFT asset page on opensea, e.g. https://opensea.io/assets/ethereum/0x103a19d9e0ec61664ef63fc3fc290bf550469b93/14
+Navigate to <a href="https://opensea.io/assets/ethereum/0x103a19d9e0ec61664ef63fc3fc290bf550469b93/14" target="_blank">NFT asset page</a> on Opensea. 
 
-Reviews from the graph will appear and the ability to write a new review.
+Reviews from the graph will appear along with a text area to submit a new review.
