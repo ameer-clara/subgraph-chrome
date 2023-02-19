@@ -14,7 +14,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
     //send message to content script
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       console.log('Tabs: ', tabs);
-      chrome.tabs.sendMessage(tabs[0].id, { message: 'Transaction xxxxxxxxxx submitted' }, function (response) {
+      chrome.tabs.sendMessage(tabs[0].id, { message: 'Transaction submitted' }, function (response) {
         console.log(response);
       });
     });
