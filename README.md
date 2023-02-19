@@ -9,11 +9,11 @@
 ### `yarn build`
 
 Builds the app for production to the `build` folder.\
-Navigate to `chrome://extensions/` and select the build folder. Subgraph Chrome 1.0 extensio will appear, ensure it is enabled.
+Navigate to `chrome://extensions/` and select the build folder. Subgraph Chrome 1.0 extension will appear, ensure it is enabled.
 
 ### `yarn dev`
 
-Builds the app for production to the `build` folder with hot reload, ideal for development.\
+Builds the app to the `build` folder with hot reload, ideal for development.\
 
 ## Usage
 
